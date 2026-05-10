@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rummikub Solver</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Rummikub Solver</h1>
+    <div class="settings-bar">
+      <label>
+        Variant:
+        <select id="variant">
+          <option value="4player">4-Player (104 tiles + 2 jokers)</option>
+          <option value="6player">6-Player (156 tiles + 4 jokers)</option>
+        </select>
+      </label>
+      <label class="toggle-label">
+        <input type="checkbox" id="initial-meld" />
+        First turn (initial meld — must total 30+ pts)
+      </label>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- TILE PICKER -->
+    <section class="tile-picker-section">
+      <div class="picker-header">
+        <h2>Tile Picker</h2>
+        <div class="mode-switch">
+          <span>Adding tiles to:</span>
+          <button id="mode-hand" class="mode-btn active" onclick="setMode('hand')">My Hand</button>
+          <button id="mode-board" class="mode-btn" onclick="setMode('board')">Board</button>
+        </div>
+      </div>
+      <div id="tile-picker">
+        <!-- Rows injected by app.js -->
+      </div>
+    </section>
+
+    <!-- HAND + BOARD PANELS -->
+    <div class="panels">
+
+      <section class="panel" id="hand-panel">
+        <h2>My Hand <span class="tile-count" id="hand-count">0 tiles</span></h2>
+        <div class="tile-tray" id="hand-tray">
+          <span class="empty-msg">No tiles added yet.</span>
+        </div>
+        <button class="clear-btn" onclick="clearTray('hand')">Clear Hand</button>
+      </section>
+
+      <section class="panel" id="board-panel">
+        <h2>Board State <span class="tile-count" id="board-count">0 tiles</span></h2>
+        <div class="tile-tray" id="board-tray">
+          <span class="empty-msg">No tiles added yet.</span>
+        </div>
+        <button class="clear-btn" onclick="clearTray('board')">Clear Board</button>
+      </section>
+
+    </div>
+
+    <!-- SOLVE -->
+    <div class="solve-bar">
+      <button id="solve-btn" onclick="solve()">Find Best Move</button>
+    </div>
+
+    <!-- RESULTS -->
+    <section id="results-section" class="hidden">
+      <h2>Result</h2>
+      <div id="results-content"></div>
+    </section>
+
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
