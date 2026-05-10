@@ -85,7 +85,7 @@ class RummikubSolver:
         ]
 
         prob = cp.Problem(obj, constraints)
-        prob.solve(solver=cp.GLPK_MI)
+        prob.solve(solver=cp.HIGHS)
 
         if len(list(prob.solution.primal_vars.keys())) == 0:
             print('No prob.solution.primal_vars')
